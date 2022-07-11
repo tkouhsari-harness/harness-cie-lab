@@ -44,14 +44,15 @@ public class CaptchaService extends AbstractCaptchaService {
     	int randomNumber = r.nextInt(high-low) + low;
     	
     	System.out.println(randomNumber);
-    
+    	Object rn= (Integer) randomNumber;
 
         /**
          * Define you target on which you would like to evaluate the featureFlag 
 	 * Builds a target using specific key value pairs. This target can then be used by rules to evalue the flag
          */
-    
-    	HashMap<String,Integer> map= (HashMap<String, Integer>) new HashMap<>().put("customerId", randomNumber);
+	    
+	HashMap<String,Object> map= new HashMap<>();
+        map.put("customerID", rn);
         Target target = Target.builder()
                 .name(targetName)
                 .identifier(targetName)
