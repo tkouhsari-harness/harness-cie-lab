@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
  {{- if lower .Values.sename}}
@@ -18,10 +18,16 @@ spec:
   {{- end }}
     http:
      paths:
-     - backend:
+     - pathType: ImplementationSpecific
+       backend:
        {{- if lower .Values.sename}}
-          serviceName: payment-service-{{ lower .Values.sename }}-svc
+          service:
+             name: payment-service-{{lower .Values.sename }}-svc
+             port:
+               number: 8080
        {{- else }}
-          serviceName: payment-service-svc
+          service:
+             name: payment-service-svc
+             port:
+               number: 8080
        {{- end }}
-          servicePort: 8080
