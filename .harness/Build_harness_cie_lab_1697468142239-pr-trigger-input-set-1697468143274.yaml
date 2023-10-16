@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1697468142239-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1697468142239prtriggerinputset
+  orgIdentifier: Cisco
+  projectIdentifier: Test_Puneet
+  pipeline:
+    identifier: Build_harness_cie_lab_1697468142239
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
