@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_workshop_harness_cie_lab_1700595023905-pr-trigger-input-set
+  identifier: Build_harness_workshop_harness_cie_lab_1700595023905prtriggerinputset
+  orgIdentifier: JPMC
+  projectIdentifier: jcf
+  pipeline:
+    identifier: Build_harness_workshop_harness_cie_lab_1700595023905
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
