@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_workshop_harness_cie_lab_1701809955042-push-trigger-input-set
+  identifier: Build_harness_workshop_harness_cie_lab_1701809955042pushtriggerinputset
+  orgIdentifier: paymentservice
+  projectIdentifier: RXODanAmbrose
+  pipeline:
+    identifier: Build_harness_workshop_harness_cie_lab_1701809955042
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
