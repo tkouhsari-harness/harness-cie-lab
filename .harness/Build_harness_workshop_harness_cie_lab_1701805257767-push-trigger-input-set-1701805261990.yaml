@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_workshop_harness_cie_lab_1701805257767-push-trigger-input-set
+  identifier: Build_harness_workshop_harness_cie_lab_1701805257767pushtriggerinputset
+  orgIdentifier: Lloyds_Workshop
+  projectIdentifier: lbgrjhnmp
+  pipeline:
+    identifier: Build_harness_workshop_harness_cie_lab_1701805257767
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
