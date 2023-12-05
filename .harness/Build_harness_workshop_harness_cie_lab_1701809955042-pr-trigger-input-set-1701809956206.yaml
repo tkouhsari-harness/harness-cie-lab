@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_workshop_harness_cie_lab_1701809955042-pr-trigger-input-set
+  identifier: Build_harness_workshop_harness_cie_lab_1701809955042prtriggerinputset
+  orgIdentifier: paymentservice
+  projectIdentifier: RXODanAmbrose
+  pipeline:
+    identifier: Build_harness_workshop_harness_cie_lab_1701809955042
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
