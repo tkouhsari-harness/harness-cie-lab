@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_workshop_harness_cie_lab_1701759640394-push-trigger-input-set
+  identifier: Build_harness_workshop_harness_cie_lab_1701759640394pushtriggerinputset
+  orgIdentifier: Morningstar
+  projectIdentifier: mstardevops
+  pipeline:
+    identifier: Build_harness_workshop_harness_cie_lab_1701759640394
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
