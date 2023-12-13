@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1702483842208-push-trigger-input-set
+  identifier: Build_harness_cie_lab_1702483842208pushtriggerinputset
+  orgIdentifier: Capital_One
+  projectIdentifier: capitalonesa
+  pipeline:
+    identifier: Build_harness_cie_lab_1702483842208
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
