@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1702483842208-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1702483842208prtriggerinputset
+  orgIdentifier: Capital_One
+  projectIdentifier: capitalonesa
+  pipeline:
+    identifier: Build_harness_cie_lab_1702483842208
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
