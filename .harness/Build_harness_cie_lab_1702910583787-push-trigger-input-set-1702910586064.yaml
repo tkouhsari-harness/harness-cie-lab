@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1702910583787-push-trigger-input-set
+  identifier: Build_harness_cie_lab_1702910583787pushtriggerinputset
+  orgIdentifier: Merck
+  projectIdentifier: msdosuchomel
+  pipeline:
+    identifier: Build_harness_cie_lab_1702910583787
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
