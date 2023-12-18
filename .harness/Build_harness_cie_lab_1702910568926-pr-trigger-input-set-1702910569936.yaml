@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1702910568926-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1702910568926prtriggerinputset
+  orgIdentifier: Merck
+  projectIdentifier: merckstarikov
+  pipeline:
+    identifier: Build_harness_cie_lab_1702910568926
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
