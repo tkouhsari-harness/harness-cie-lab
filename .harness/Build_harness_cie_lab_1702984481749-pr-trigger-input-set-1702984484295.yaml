@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1702984481749-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1702984481749prtriggerinputset
+  orgIdentifier: handsonlab55org
+  projectIdentifier: ryanlab
+  pipeline:
+    identifier: Build_harness_cie_lab_1702984481749
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
