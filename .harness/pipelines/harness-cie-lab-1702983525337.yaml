@@ -35,3 +35,33 @@ pipeline:
             spec: {}
             type: Cloud
         type: CI
+    - stage:
+        name: Build and Push
+        identifier: Build_and_Push
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+          execution:
+            steps:
+              - step:
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
+                  spec:
+                    language: Java
+                    buildTool: Maven
+                    args: clean tests
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - /
+                    enableTestSplitting: false
