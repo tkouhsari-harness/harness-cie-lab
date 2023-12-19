@@ -61,6 +61,12 @@ pipeline:
                         memory: 1Gi
                         cpu: "1"
               - step:
+                  name: Fortify
+                  identifier: Fortify
+                  template:
+                    templateRef: account.fortify_scan
+                    versionLabel: v0.1
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
@@ -74,6 +80,12 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
+              - step:
+                  name: OWASP
+                  identifier: OWASP
+                  template:
+                    templateRef: account.OWASP
+                    versionLabel: "0.01"
   tags: {}
   properties:
     ci:
