@@ -10,7 +10,7 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -23,8 +23,8 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: RunTests_1
-                  identifier: RunTests_1
+                  name: Run Tests
+                  identifier: Run_Tests
                   spec:
                     connectorRef: account.bootcampdockerhub
                     image: nikpap/mvn-openjdk-8:harness
@@ -46,8 +46,8 @@ pipeline:
                     enableTestSplitting: false
               - step:
                   type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  name: Build
+                  identifier: Build
                   spec:
                     connectorRef: account.bootcampdockerhub
                     image: nikpap/mvn-openjdk-8:harness
@@ -61,30 +61,23 @@ pipeline:
                         memory: 1Gi
                         cpu: "1"
               - step:
-                  name: Fortify
-                  identifier: Fortify
-                  template:
-                    templateRef: account.fortify_scan
-                    versionLabel: v0.1
-              - step:
                   type: BuildAndPushDockerRegistry
-                  name: Push to DockerHub
-                  identifier: Push_to_DockerHub
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: account.bootcampdockerhub
                     repo: nikpap/payment-service-workshop
                     tags:
                       - ryanlab-latest
+                    optimize: true
                     resources:
                       limits:
                         memory: 1Gi
                         cpu: "1"
-              - step:
-                  name: OWASP
-                  identifier: OWASP
-                  template:
-                    templateRef: account.OWASP
-                    versionLabel: "0.01"
-          slsa_provenance:
-            enabled: false
   tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.workshopgithub
+        repoName: harness-cie-lab
+        build: <+input>
