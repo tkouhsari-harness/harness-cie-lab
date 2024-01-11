@@ -29,7 +29,7 @@ pipeline:
                     args: test
                     packages: com.nikp
                     runOnlySelectedTests: true
-                    postCommand: cd payment-service
+                    preCommand: cd payment-service
                     reports:
                       type: JUnit
                       spec:
