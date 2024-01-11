@@ -73,7 +73,7 @@ pipeline:
                     connectorRef: account.bootcampdockerhub
                     repo: nikpap/payment-service-workshop
                     tags:
-                      - dde49-latest
+                      - venkatesheerla-latest
                     optimize: true
                     resources:
                       limits:
