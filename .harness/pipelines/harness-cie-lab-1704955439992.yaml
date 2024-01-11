@@ -12,23 +12,11 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: Build and Push
         spec:
           cloneCodebase: true
           execution:
             steps:
-              - step:
-                  identifier: dockerbuild
-                  name: Build and Push
-                  spec:
-                    connectorRef: account.bootcampdockerhub
-                    image: payment-service-build
-                    settings:
-                      dry_run: "true"
-                      repo: hello/world
-                      tags: latest
-                  timeout: ""
-                  type: Plugin
               - step:
                   type: RunTests
                   name: Run Tests
@@ -101,4 +89,10 @@ pipeline:
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
         type: CI
+        description: ""
