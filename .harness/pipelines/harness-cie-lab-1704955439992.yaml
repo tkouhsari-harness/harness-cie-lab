@@ -19,9 +19,10 @@ pipeline:
             steps:
               - step:
                   identifier: dockerbuild
-                  name: docker_build
+                  name: Build and Push
                   spec:
-                    image: plugins/docker
+                    connectorRef: account.bootcampdockerhub
+                    image: payment-service-build
                     settings:
                       dry_run: "true"
                       repo: hello/world
