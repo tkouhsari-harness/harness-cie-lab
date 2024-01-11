@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1704974866775-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1704974866775prtriggerinputset
+  orgIdentifier: demoorg
+  projectIdentifier: dde49
+  pipeline:
+    identifier: Build_harness_cie_lab_1704974866775
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
