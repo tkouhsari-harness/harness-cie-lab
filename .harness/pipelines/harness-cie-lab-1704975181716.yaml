@@ -28,10 +28,12 @@ pipeline:
                       tags: latest
                   timeout: ""
                   type: Plugin
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.bootcampgkecluster
+              namespace: payment-service-build
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
         type: CI
