@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_harness_cie_lab_1704975189094-pr-trigger-input-set
+  identifier: Build_harness_cie_lab_1704975189094prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: paymentsservice
+  pipeline:
+    identifier: Build_harness_cie_lab_1704975189094
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
