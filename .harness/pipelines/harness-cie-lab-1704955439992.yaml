@@ -146,7 +146,8 @@ pipeline:
                   name: Policy - No Critical CVEs
                   identifier: Policy_No_Critical_CVEs
                   spec:
-                    policySets: <+input>
+                    policySets:
+                      - Criticals Now Allowed
                     type: Custom
                     policySpec:
                       payload: "{\"JAVA_OSS_CRITICAL_COUNT\": <variable>}"
