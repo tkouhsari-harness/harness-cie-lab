@@ -46,7 +46,7 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: RunTests_1
+                  name: Run Test
                   identifier: RunTests_1
                   spec:
                     connectorRef: account.bootcampdockerhub
@@ -83,20 +83,20 @@ pipeline:
                         memory: 1Gi
                         cpu: "1"
               - step:
-                  name: Fortify
+                  name: DevX Fortify Scan
                   identifier: Fortify
                   template:
                     templateRef: account.fortify_scan
                     versionLabel: v0.1
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Push to DockerHub
+                  name: Build and Push an image to Docker Registry
                   identifier: Push_to_DockerHub
                   spec:
                     connectorRef: account.bootcampdockerhub
                     repo: nikpap/payment-service-workshop
                     tags:
-                      - <+pipeline.variables.John.username>-Latest
+                      - <+pipeline.variables.John.username>-latest
                     optimize: true
                     resources:
                       limits:
