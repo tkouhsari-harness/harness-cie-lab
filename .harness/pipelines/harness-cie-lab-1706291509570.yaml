@@ -108,6 +108,8 @@ pipeline:
                   template:
                     templateRef: account.OWASP
                     versionLabel: "0.01"
+        when:
+          pipelineStatus: Success
   properties:
     ci:
       codebase:
