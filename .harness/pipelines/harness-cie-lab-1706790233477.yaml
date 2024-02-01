@@ -35,6 +35,10 @@ pipeline:
                       spec:
                         paths:
                           - "**/*.xml"
+                    resources:
+                      limits:
+                        memory: 2GI
+                        cpu: "2"
                     enableTestSplitting: false
               - step:
                   type: Run
@@ -47,29 +51,10 @@ pipeline:
                     command: |
                       cd payment-service
                       mvn -Dmaven.test.skip=true clean install -X
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: account.bootcampdockerhub
-                    repo: nikpap/payment-service-workshop
-                    tags:
-                      - sujoybanerjee-latest
-              - step:
-                  type: Owasp
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      type: repository
-                      name: <+pipeline.name>
-                      variant: <+codebase.branch>
-                    advanced:
-                      log:
-                        level: info
-                  name: Sujoy_OWSAP_Test
-                  identifier: Sujoy_OWSAP_Test
+                    resources:
+                      limits:
+                        memory: 1Gi
+                        cpu: "1"
               - step:
                   type: Security
                   spec:
@@ -97,8 +82,35 @@ pipeline:
                                 type: StageRollback
                   when:
                     stageStatus: Success
-                  name: Sujoy_Sample_Test
-                  identifier: Sujoy_Sample_Test
+                  name: Fortify
+                  identifier: Fortify
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.bootcampdockerhub
+                    repo: nikpap/payment-service-workshop
+                    tags:
+                      - sujoybanerjee-latest
+                    resources:
+                      limits:
+                        memory: 1Gi
+                        cpu: "1"
+              - step:
+                  type: Owasp
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: repository
+                      name: <+pipeline.name>
+                      variant: <+codebase.branch>
+                    advanced:
+                      log:
+                        level: info
+                  name: OWSAP
+                  identifier: OWSAP
           infrastructure:
             type: KubernetesDirect
             spec:
