@@ -21,6 +21,7 @@ pipeline:
                   identifier: dockerbuild
                   name: docker_build
                   spec:
+                    connectorRef: account.bootcampdockerhub
                     image: plugins/docker
                     settings:
                       dry_run: "true"
@@ -30,7 +31,7 @@ pipeline:
                   type: Plugin
               - step:
                   type: RunTests
-                  name: RunTests_1
+                  name: RunTests
                   identifier: RunTests_1
                   spec:
                     connectorRef: account.bootcampdockerhub
