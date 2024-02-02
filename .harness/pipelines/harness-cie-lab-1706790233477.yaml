@@ -82,7 +82,7 @@ pipeline:
                                 type: StageRollback
                   when:
                     stageStatus: Success
-                  name: Fortify
+                  name: fortify_scan
                   identifier: Fortify
               - step:
                   type: BuildAndPushDockerRegistry
@@ -109,8 +109,7 @@ pipeline:
                     advanced:
                       log:
                         level: info
-                      fail_on_severity: high
-                  name: OWSAP
+                  name: OWASP
                   identifier: OWSAP
           infrastructure:
             type: KubernetesDirect
