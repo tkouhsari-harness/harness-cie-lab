@@ -23,7 +23,7 @@ pipeline:
                   identifier: RunTests
                   spec:
                     connectorRef: account.bootcampdockerhub
-                    image: nikpap/payment-service-workshop
+                    image: nikpap/mvn-openjdk-8:harness
                     language: Java
                     buildTool: Maven
                     args: test
