@@ -18,18 +18,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
-                  spec:
-                    connectorRef: account.bootcampdockerhub
-                    image: plugins/docker
-                    settings:
-                      dry_run: "true"
-                      repo: hello/world
-                      tags: latest
-                  timeout: ""
-                  type: Plugin
-              - step:
                   type: RunTests
                   name: RunTests
                   identifier: RunTests_1
