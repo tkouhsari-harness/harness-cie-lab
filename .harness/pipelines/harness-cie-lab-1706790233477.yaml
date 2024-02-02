@@ -121,22 +121,33 @@ pipeline:
               os: Linux
         type: CI
     - stage:
-        name: Sujoy_k8_Deployment
-        identifier: Sujoy_k8_Deployment
+        name: k8_Deployment
+        identifier: k8_Deployment
         description: ""
         type: Deployment
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: org.paymentservice
+            serviceRef: paymentservice
             serviceInputs:
               serviceDefinition:
                 type: Kubernetes
                 spec:
+                  manifests:
+                    - manifest:
+                        identifier: templates
+                        type: K8sManifest
+                        spec:
+                          valuesPaths: <+input>
                   artifacts:
                     primary:
                       primaryArtifactRef: <+input>
                       sources: <+input>
+          environment:
+            environmentRef: org.dev
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: k8s
           execution:
             steps:
               - stepGroup:
@@ -184,11 +195,6 @@ pipeline:
                   type: K8sRollingRollback
                   timeout: 10m
                   spec: {}
-          environment:
-            environmentRef: org.dev
-            deployToAll: false
-            infrastructureDefinitions:
-              - identifier: k8s
         tags: {}
         failureStrategies:
           - onFailure:
@@ -197,3 +203,9 @@ pipeline:
               action:
                 type: StageRollback
   tags: {}
+  variables:
+    - name: seusername
+      type: String
+      description: ""
+      required: false
+      value: <+input>
