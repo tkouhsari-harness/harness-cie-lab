@@ -12,7 +12,7 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: Build and Push
         spec:
           cloneCodebase: true
           execution:
@@ -100,7 +100,13 @@ pipeline:
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
+          caching:
+            enabled: false
+            paths: []
+          slsa_provenance:
+            enabled: false
         type: CI
+        description: ""
     - stage:
         name: Deploy to Dev
         identifier: Deploy_to_Dev
