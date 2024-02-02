@@ -109,6 +109,7 @@ pipeline:
                     advanced:
                       log:
                         level: info
+                      fail_on_severity: high
                   name: OWSAP
                   identifier: OWSAP
           infrastructure:
