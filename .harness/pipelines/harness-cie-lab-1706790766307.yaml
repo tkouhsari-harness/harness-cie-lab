@@ -18,12 +18,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  name: docker_build
-                  identifier: docker_build
-                  template:
-                    templateRef: temp
-                    versionLabel: v1
-              - step:
                   type: RunTests
                   name: RunTests
                   identifier: RunTests_1
