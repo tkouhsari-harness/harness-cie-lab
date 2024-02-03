@@ -90,6 +90,32 @@ pipeline:
               os: Linux
         type: CI
     - stage:
+        name: Approval
+        identifier: Approval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: HarnessApproval
+                  identifier: HarnessApproval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - WorkshopUsergroup
+                    isAutoRejectEnabled: false
+                    approverInputs: []
+        tags: {}
+    - stage:
         name: k8_Deployment
         identifier: k8_Deployment
         description: ""
@@ -119,6 +145,21 @@ pipeline:
               - identifier: k8s
           execution:
             steps:
+              - step:
+                  type: HarnessApproval
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - WorkshopUsergroup
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
               - stepGroup:
                   name: Canary Deployment
                   identifier: canaryDepoyment
