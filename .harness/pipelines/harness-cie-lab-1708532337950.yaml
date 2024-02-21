@@ -25,6 +25,18 @@ pipeline:
                   timeout: ""
                   type: Run
               - step:
+                  name: Fortify
+                  identifier: Fortify
+                  template:
+                    templateRef: account.fortify_scan
+                    versionLabel: v0.1
+              - step:
+                  name: sm
+                  identifier: sm
+                  template:
+                    templateRef: account.OWASP
+                    versionLabel: "0.01"
+              - step:
                   identifier: dockerbuild
                   name: docker_build
                   spec:
@@ -37,10 +49,19 @@ pipeline:
                       username: <+input>
                   timeout: ""
                   type: Plugin
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.bootcampdockerhub
+                    repo: nikpap/payment-service-workshop
+                    tags:
+                      - sm-latest
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
+            type: Docker
             spec: {}
-            type: Cloud
         type: CI
