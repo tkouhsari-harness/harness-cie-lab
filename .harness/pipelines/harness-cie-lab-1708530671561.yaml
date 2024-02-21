@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_harness_cie_lab_1708530697357
-  name: Build harness-cie-lab
+  name: payment service
   orgIdentifier: marriott88org
   projectIdentifier: Subrata
   properties:
@@ -45,3 +45,4 @@ pipeline:
             spec: {}
         type: CI
         description: ""
+  tags: {}
