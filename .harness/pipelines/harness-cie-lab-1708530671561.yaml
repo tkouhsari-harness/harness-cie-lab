@@ -44,3 +44,4 @@ pipeline:
             type: Cloud
             spec: {}
         type: CI
+        description: ""
