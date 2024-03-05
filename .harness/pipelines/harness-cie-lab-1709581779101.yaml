@@ -102,27 +102,6 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
-              - step:
-                  type: AquaTrivy
-                  name: AquaTrivy
-                  identifier: AquaTrivy
-                  spec:
-                    mode: orchestration
-                    config: default
-                    target:
-                      type: container
-                      name: paymentserviceimage
-                      variant: latest
-                    advanced:
-                      log:
-                        level: info
-                    privileged: true
-                    image:
-                      type: docker_v2
-                      name: nikpap/payment-service-workshop
-                      tag: ejaz-latest
-                    sbom:
-                      format: spdx-json
           sharedPaths:
             - /var/run
           caching:
