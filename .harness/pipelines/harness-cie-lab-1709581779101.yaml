@@ -158,7 +158,7 @@ pipeline:
               action:
                 type: StageRollback
   variables:
-    - name: sename
+    - name: seusername
       type: String
       description: ""
       required: true
