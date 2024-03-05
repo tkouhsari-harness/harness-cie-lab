@@ -11,7 +11,7 @@ pipeline:
         repoName: harness-cie-lab
   stages:
     - stage:
-        name: Build and push
+        name: Build and push edited
         identifier: Build_and_push
         description: ""
         type: CI
@@ -107,6 +107,32 @@ pipeline:
           caching:
             enabled: false
             paths: []
+    - stage:
+        name: Approval
+        identifier: Approval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: Approval
+                  identifier: Approval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - org._organization_all_users
+                    isAutoRejectEnabled: false
+                    approverInputs: []
+        tags: {}
     - stage:
         name: Deploy to Dev
         identifier: Deploy_to_Dev
