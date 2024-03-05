@@ -96,6 +96,10 @@ pipeline:
                     primary:
                       primaryArtifactRef: <+input>
                       sources: <+input>
+                  manifests:
+                    - manifest:
+                        spec:
+                          valuesPaths: <+input>
           environment:
             environmentRef: Dev
             deployToAll: false
