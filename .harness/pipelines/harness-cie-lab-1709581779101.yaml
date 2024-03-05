@@ -87,19 +87,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: paymentservice
-            serviceInputs:
-              serviceDefinition:
-                type: Kubernetes
-                spec:
-                  artifacts:
-                    primary:
-                      primaryArtifactRef: <+input>
-                      sources: <+input>
-                  manifests:
-                    - manifest:
-                        spec:
-                          valuesPaths: <+input>
+            serviceRef: paymentservice1
           environment:
             environmentRef: Dev
             deployToAll: false
