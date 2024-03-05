@@ -191,3 +191,8 @@ pipeline:
       description: ""
       required: true
       value: <+input>
+    - name: clientkey
+      type: String
+      description: ""
+      required: true
+      value: <+input>
