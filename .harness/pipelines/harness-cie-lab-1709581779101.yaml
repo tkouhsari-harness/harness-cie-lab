@@ -164,6 +164,23 @@ pipeline:
                   identifier: canaryDepoyment
                   steps:
                     - step:
+                        type: Policy
+                        name: Policy - No Critical CVEs
+                        identifier: Policy_No_Critical_CVEs
+                        spec:
+                          policySets:
+                            - Criticals_Not_Allowed
+                          type: Custom
+                          policySpec:
+                            payload: |-
+                              {"JAVA_OSS_CRITICAL_COUN
+                              T":
+                              <+pipeline.stages.Build_
+                              and_Push.spec.execution.
+                              steps.OWASP.output.outpu
+                              tVariables.CRITICAL>}
+                        timeout: 10m
+                    - step:
                         name: Canary Deployment
                         identifier: canaryDeployment
                         type: K8sCanaryDeploy
