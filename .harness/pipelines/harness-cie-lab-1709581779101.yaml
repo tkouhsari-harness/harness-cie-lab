@@ -88,6 +88,16 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: paymentservice1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  manifests:
+                    - manifest:
+                        identifier: templates
+                        type: K8sManifest
+                        spec:
+                          valuesPaths: <+input>
           environment:
             environmentRef: Dev
             deployToAll: false
