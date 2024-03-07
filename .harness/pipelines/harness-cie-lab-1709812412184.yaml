@@ -5,27 +5,6 @@ pipeline:
   orgIdentifier: lloyds96org
   stages:
     - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
-                  spec:
-                    shell: Sh
-                    command: echo "Welcome to Harness CI"
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-    - stage:
         name: Build and Push
         identifier: Build_and_Push
         description: ""
@@ -80,6 +59,12 @@ pipeline:
                         memory: 1Gi
                         cpu: "1"
               - step:
+                  name: Fortify
+                  identifier: Fortify
+                  template:
+                    templateRef: account.fortify_scan
+                    versionLabel: v0.1
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
@@ -93,6 +78,12 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
+              - step:
+                  name: OWASP
+                  identifier: OWASP
+                  template:
+                    templateRef: account.OWASP
+                    versionLabel: "0.01"
   properties:
     ci:
       codebase:
