@@ -173,7 +173,7 @@ pipeline:
         repoName: harness-cie-lab
         build: <+input>
   variables:
-    - name: sukypanesar
+    - name: seusername
       type: String
       description: ""
       required: false
