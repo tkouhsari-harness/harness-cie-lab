@@ -18,7 +18,7 @@ servicePort: 8080
 serviceTargetPort: 8080
 
 #Templatise this using harness variables.
-username: <+pipeline.variables.seusername>
+username: <+pipeline.variables.username>
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap
@@ -28,7 +28,7 @@ username: <+pipeline.variables.seusername>
 env:
   config:
     HARNESS_CLIENT_FF: <+pipeline.variables.clientkey>
-    HARNESS_SE: <+pipeline.variables.seusername>
+    HARNESS_SE: <+pipeline.variables.username>
     HARNESS_BUILD: <+pipeline.sequenceId>
   secrets:
     key2: value2
