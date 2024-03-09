@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.nikp.PaymentApplication;
-import com.nikp.captcha.CaptchaService;
 import com.nikp.eventbus.api.EventBus;
 import com.nikp.payment.api.MVCController;
 import com.nikp.payment.domain.Payment;
@@ -47,8 +46,6 @@ public class MVCControllerTest {
   @MockBean
   private PaymentRepository paymentRepository;
   
-  @MockBean
-  private CaptchaService captchaService;
 
   @MockBean
   private EventBus eventBus;
