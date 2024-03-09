@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- {{- if lower .Values.sename}}
- name: ingress-router-{{ lower .Values.sename }}
+ {{- if lower .Values.username}}
+ name: ingress-router-{{ lower .Values.username }}
  {{- else }}
  name: ingress-router
  {{- end }}
@@ -11,8 +11,8 @@ metadata:
    kubernetes.io/ingress.global-static-ip-name: "bootcamp-static-ip"
 spec:
   rules:
-  {{- if lower .Values.sename}}
-  - host: {{ lower .Values.sename }}.cie-bootcamp.co.uk
+  {{- if lower .Values.username}}
+  - host: {{ lower .Values.username }}.cie-bootcamp.co.uk
   {{- else }}
   - host: cie-bootcamp.co.uk
   {{- end }}
@@ -20,9 +20,9 @@ spec:
      paths:
      - pathType: ImplementationSpecific
        backend:
-       {{- if lower .Values.sename}}
+       {{- if lower .Values.username}}
           service:
-             name: payment-service-{{lower .Values.sename }}-svc
+             name: payment-service-{{lower .Values.username }}-svc
              port:
                number: 8080
        {{- else }}

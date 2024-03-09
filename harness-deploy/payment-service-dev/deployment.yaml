@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
- {{- if lower .Values.sename}}
- name: {{ lower .Values.name }}-{{ lower .Values.sename }}
+ {{- if lower .Values.username}}
+ name: {{ lower .Values.name }}-{{ lower .Values.username }}
  {{- else }}
  name: {{lower .Values.name}}
  {{- end }} 
@@ -16,8 +16,8 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
- {{- if lower .Values.sename}}
- name: {{ lower .Values.name }}-{{ lower .Values.sename }}
+ {{- if lower .Values.username}}
+ name: {{ lower .Values.name }}-{{ lower .Values.username }}
  {{- else }}
  name: {{lower .Values.name}}
  {{- end }} 
@@ -30,8 +30,8 @@ stringData:
 apiVersion: v1
 kind: Secret
 metadata:
-  {{- if lower .Values.sename }}
-  name: {{ lower .Values.name }}-{{ lower .Values.sename }}-dockercfg
+  {{- if lower .Values.username }}
+  name: {{ lower .Values.name }}-{{ lower .Values.username }}-dockercfg
   {{- else }}
   name: {{ lower .Values.name }}
   {{- end }}
@@ -46,8 +46,8 @@ type: kubernetes.io/dockercfg
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- {{- if lower .Values.sename}}
- name: {{ lower .Values.name }}-{{ lower .Values.sename }}-deployment
+ {{- if lower .Values.username}}
+ name: {{ lower .Values.name }}-{{ lower .Values.username }}-deployment
  {{- else }}
  name: {{lower .Values.name}}-deployment
  {{- end }} 
@@ -55,31 +55,31 @@ spec:
   replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
-     {{- if lower .Values.sename}}
-      app: {{ lower .Values.name }}-{{ lower .Values.sename }}
+     {{- if lower .Values.username}}
+      app: {{ lower .Values.name }}-{{ lower .Values.username }}
      {{- else }}
       app: {{ lower .Values.name }}
      {{- end }} 
   template:
     metadata:
       labels:
-        {{- if lower .Values.sename}}
-        app: {{ lower .Values.name }}-{{ lower .Values.sename }}
+        {{- if lower .Values.username}}
+        app: {{ lower .Values.name }}-{{ lower .Values.username }}
         {{- else }}
         app: {{ lower .Values.name }}
         {{- end }} 
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
-      {{- if lower .Values.sename }}
-      - name: {{ lower .Values.name }}-{{ lower .Values.sename }}-dockercfg
+      {{- if lower .Values.username }}
+      - name: {{ lower .Values.name }}-{{ lower .Values.username }}-dockercfg
       {{- else }}
       - name: {{ lower .Values.name }}-dockercfg
       {{- end}}
       {{- end}}
       containers:
-      {{- if lower .Values.sename }}
-      - name: {{ lower .Values.name }}-{{ lower .Values.sename }}
+      {{- if lower .Values.username }}
+      - name: {{ lower .Values.name }}-{{ lower .Values.username }}
       {{- else }}
       - name: {{ lower .Values.name }}
       {{- end}}
@@ -89,16 +89,16 @@ spec:
         envFrom:
         {{- if .Values.env.config}}
         - configMapRef:
-            {{- if lower .Values.sename }}
-            name: {{ lower .Values.name }}-{{ lower .Values.sename }}
+            {{- if lower .Values.username }}
+            name: {{ lower .Values.name }}-{{ lower .Values.username }}
             {{- else}}
             name: {{ lower .Values.name }}
             {{- end}}
         {{- end}}
         {{- if .Values.env.secrets}}
         - secretRef:
-            {{- if lower .Values.sename }}
-            name: {{ lower .Values.name }}-{{ lower .Values.sename }}
+            {{- if lower .Values.username }}
+            name: {{ lower .Values.name }}-{{ lower .Values.username }}
             {{- else}}
             name: {{ lower .Values.name }}
             {{- end}}
