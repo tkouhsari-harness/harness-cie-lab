@@ -25,6 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="https://nikp-static-files.s3.eu-west-2.amazonaws.com/payment-service/css/main.css">
 <!--===============================================================================================-->
     <script src="https://unpkg.com/@harnessio/ff-javascript-client-sdk/dist/sdk.client-iife.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 <body>
@@ -181,6 +182,10 @@
 				</div>
 				
 							<div class="wrap-input100 validate-input" >
+					<div class="g-recaptcha col-sm-5"
+					th:attr="data-sitekey=6LdXZzQbAAAAAM2BjBs_0gLs3lantY_JM7MjiOxr"></div>
+<span id="captchaError" class="alert alert-danger col-sm-4"
+         				 style="display:none"></span>
 
 
 					<span class="focus-input100"></span>

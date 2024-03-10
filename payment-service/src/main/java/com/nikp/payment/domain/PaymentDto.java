@@ -10,6 +10,7 @@ public class PaymentDto {
     private String accountFrom;
     private String accountTo;
     private Long amount;
+    private String captchaResponse;
     private String bankValidation="";
     
     
@@ -32,7 +33,47 @@ public class PaymentDto {
 	public void setBuildNumber(String buildNumber) {
 		this.buildNumber = buildNumber;
 	}
+	
+	@Transient
+	private String captcha;
+	
+	@Transient
+	private String hiddenCaptcha;
+	
+	@Transient
+	private String realCaptcha;
+    
+    public String getCaptcha() {
+		return captcha;
+	}
 
+	public void setCaptcha(String captcha) {
+		this.captcha = captcha;
+	}
+
+	public String getHiddenCaptcha() {
+		return hiddenCaptcha;
+	}
+
+	public void setHiddenCaptcha(String hiddenCaptcha) {
+		this.hiddenCaptcha = hiddenCaptcha;
+	}
+
+	public String getRealCaptcha() {
+		return realCaptcha;
+	}
+
+	public void setRealCaptcha(String realCaptcha) {
+		this.realCaptcha = realCaptcha;
+	}
+
+	public String getCaptchaResponse() {
+		return captchaResponse;
+	}
+
+	public void setCaptchaResponse(String captchaResponse) {
+		this.captchaResponse = captchaResponse;
+	}
 
 	public PaymentDto() {
     }

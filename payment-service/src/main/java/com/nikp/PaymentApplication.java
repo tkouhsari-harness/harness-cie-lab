@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
+
+import com.nikp.captcha.CaptchaService;
 import com.nikp.payment.api.PaymentService;
 
 
@@ -46,6 +48,11 @@ public class PaymentApplication {
     	 return cfClient;
     }
     
+    @Bean
+    public CaptchaService captchaService() {
+    	return new CaptchaService();
+    }
+
     @Bean
     public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
         PoolingHttpClientConnectionManager result = new PoolingHttpClientConnectionManager();
