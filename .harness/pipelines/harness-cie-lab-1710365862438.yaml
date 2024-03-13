@@ -73,12 +73,14 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.bootcampgkecluster
+              namespace: payment-service-build
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
     - stage:
         name: Deploy to Dev
         identifier: Deploy_to_Dev
