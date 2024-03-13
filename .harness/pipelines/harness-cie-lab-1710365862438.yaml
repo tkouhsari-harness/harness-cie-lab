@@ -89,7 +89,7 @@ pipeline:
         spec:
           deploymentType: Kubernetes
           service:
-            serviceRef: taxservicebhaskar
+            serviceRef: paymentservice
           environment:
             environmentRef: org.dev
             deployToAll: false
