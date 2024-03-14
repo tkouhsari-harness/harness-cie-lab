@@ -27,7 +27,7 @@ sename: <+pipeline.variables.seusername>
 
 env:
   config:
-    HARNESS_CLIENT_FF: <+pipeline.variables.clientkey>
+    HARNESS_CLIENT_FF: <+<+pipeline.variables.clientkey> || "none">
     HARNESS_SE: <+pipeline.variables.seusername>
     HARNESS_BUILD: <+pipeline.sequenceId>
   secrets:
