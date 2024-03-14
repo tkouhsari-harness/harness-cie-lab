@@ -12,7 +12,7 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: build and run
         spec:
           cloneCodebase: true
           execution:
@@ -37,10 +37,19 @@ pipeline:
                       username: <+input>
                   timeout: ""
                   type: Plugin
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec: {}
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
+          caching:
+            enabled: false
+            paths: []
         type: CI
+        description: ""
