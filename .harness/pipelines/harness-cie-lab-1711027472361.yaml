@@ -56,6 +56,7 @@ pipeline:
             spec:
               connectorRef: account.bootcampgkecluster
               namespace: payment-service-build
+              automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
           execution:
@@ -85,6 +86,12 @@ pipeline:
                     enableTestSplitting: false
                   description: Run Tests With Intelligence
               - step:
+                  name: Fortify
+                  identifier: Fortify
+                  template:
+                    templateRef: account.fortify_scan
+                    versionLabel: v0.1
+              - step:
                   type: Run
                   name: Build
                   identifier: Build
@@ -113,3 +120,9 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
+              - step:
+                  name: OWASP
+                  identifier: OWASP
+                  template:
+                    templateRef: account.OWASP
+                    versionLabel: "0.02"
