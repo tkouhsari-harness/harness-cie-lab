@@ -11,7 +11,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: Build and Pus
+        name: Build and Push
         identifier: Build_and_Push
         description: ""
         type: CI
