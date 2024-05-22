@@ -144,6 +144,23 @@ pipeline:
                             disallowPipelineExecutor: false
                           approverInputs: []
                         timeout: 1d
+                    - stepGroup:
+                        name: Policy
+                        identifier: Policy
+                        steps:
+                          - step:
+                              type: Policy
+                              name: Policy - No Critical CVEs
+                              identifier: Policy_No_Critical_CVEs
+                              spec:
+                                policySets:
+                                  - Criticals_Not_Allowed
+                                type: Custom
+                                policySpec:
+                                  payload: |-
+                                    "JAVA_OSS_CRITICAL_COUNT":
+                                    <variable>}
+                              timeout: 10m
                     - step:
                         name: Canary Deployment
                         identifier: canaryDeployment
