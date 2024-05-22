@@ -11,7 +11,7 @@ pipeline:
         build: <+input>
   stages:
     - stage:
-        name: Build and Push
+        name: Build and Pus
         identifier: Build_and_Push
         description: ""
         type: CI
@@ -92,6 +92,9 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
+          caching:
+            enabled: false
+            paths: []
     - stage:
         name: Deploy to Dev
         identifier: Deploy_to_Dev
