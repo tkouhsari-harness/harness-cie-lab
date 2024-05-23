@@ -37,6 +37,7 @@ pipeline:
                     language: Java
                     buildTool: Maven
                     args: test
+                    packages: com.nikp
                     runOnlySelectedTests: true
                     preCommand: cd payment-service
                     reports:
@@ -44,6 +45,10 @@ pipeline:
                       spec:
                         paths:
                           - "**/*.xml"
+                    resources:
+                      limits:
+                        memory: 2Gi
+                        cpu: "2"
                     enableTestSplitting: false
                     testSplitStrategy: ClassTiming
               - step:
