@@ -131,7 +131,7 @@ pipeline:
                   steps:
                     - step:
                         type: HarnessApproval
-                        name: HarnessApproval
+                        name: Approval
                         identifier: HarnessApproval
                         spec:
                           approvalMessage: Please review the following information and approve the pipeline progression
