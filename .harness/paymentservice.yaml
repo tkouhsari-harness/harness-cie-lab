@@ -38,12 +38,7 @@ pipeline:
                     buildTool: Maven
                     args: test
                     runOnlySelectedTests: true
-                    preCommand: |-
-                      cd payment-service 
-                      com.nikp
-                      Enabled
-                      2Gi 
-                      2
+                    preCommand: cd payment-service
                     reports:
                       type: JUnit
                       spec:
