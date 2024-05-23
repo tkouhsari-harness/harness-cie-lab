@@ -140,25 +140,21 @@ pipeline:
                       disallowPipelineExecutor: false
                     approverInputs: []
                   timeout: 1d
+              - step:
+                  type: Policy
+                  name: Policy - No Critical CVEs
+                  identifier: Policy_No_Critical_CVEs
+                  spec:
+                    policySets:
+                      - Criticals_Not_Allowed
+                    type: Custom
+                    policySpec:
+                      payload: "{\"JAVA_OSS_CRITICAL_COUNT\":<+pipeline.stages.Build_and_Push.spec.execution.steps.OWASP.output.outputVariables.CRITICAL>}"
+                  timeout: 10m
               - stepGroup:
                   name: Canary Deployment
                   identifier: canaryDepoyment
                   steps:
-                    - stepGroup:
-                        name: Policy
-                        identifier: Policy
-                        steps:
-                          - step:
-                              type: Policy
-                              name: Policy - No Critical CVEs
-                              identifier: Policy_No_Critical_CVEs
-                              spec:
-                                policySets:
-                                  - Criticals_Not_Allowed
-                                type: Custom
-                                policySpec:
-                                  payload: "\"JAVA_OSS_CRITICAL_COUNT\": <+pipeline.stages.Build_and_Push.spec.execution.steps.OWASP.output.outputVariables.CRITICAL>"
-                              timeout: 10m
                     - step:
                         name: Canary Deployment
                         identifier: canaryDeployment
