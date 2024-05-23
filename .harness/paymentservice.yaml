@@ -157,9 +157,7 @@ pipeline:
                                   - Criticals_Not_Allowed
                                 type: Custom
                                 policySpec:
-                                  payload: |-
-                                    "JAVA_OSS_CRITICAL_COUNT":
-                                    <variable>}
+                                  payload: "\"JAVA_OSS_CRITICAL_COUNT\": <+pipeline.stages.Build_and_Push.spec.execution.steps.OWASP.output.outputVariables.CRITICAL>"
                               timeout: 10m
                     - step:
                         name: Canary Deployment
