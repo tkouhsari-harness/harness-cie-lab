@@ -67,12 +67,6 @@ pipeline:
                         memory: 1Gi
                         cpu: "1"
               - step:
-                  name: OWASP
-                  identifier: OWASP
-                  template:
-                    templateRef: account.OWASP
-                    versionLabel: "0.02"
-              - step:
                   name: Fortify
                   identifier: Fortify
                   template:
@@ -92,6 +86,12 @@ pipeline:
                       limits:
                         memory: 1Gi
                         cpu: "1"
+              - step:
+                  name: OWASP
+                  identifier: OWASP
+                  template:
+                    templateRef: account.OWASP
+                    versionLabel: "0.02"
           caching:
             enabled: false
             paths: []
