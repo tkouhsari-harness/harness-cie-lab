@@ -88,7 +88,7 @@ public class MVCControllerTest {
     PaymentDto paymentDto = new PaymentDto();
     paymentDto.setUserId("u_id1");
     paymentDto.setAccountFrom("51351");
-    paymentDto.setAccountTo("1234b");
+    paymentDto.setAccountTo("1234bc");
  
 
     mockMvc.perform(
